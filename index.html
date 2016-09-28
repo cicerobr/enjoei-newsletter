@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <!-- biblioteca para resposta fake de sucesso no envio do post -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
     <script>$.mockjax({ url: /.*\/api\/newsletter/, responseText: { status: 'success', message: 'Cadastro efetuado com sucesso' }});</script>
 
@@ -82,9 +81,11 @@
 
       <div class="box-form">
 
-        <img src="images/gato-big.png" alt="Enjoei :)">
+        <img class="gato-big" src="images/gato-big.png" alt="Enjoei :)">
+        <img class="gato-tablet" src="images/gato-tablet.png" alt="Enjoei :)">
 
-        <form action="">
+        <!-- formulário -->
+        <form action="" class="ajax-form">
 
           <label>Nome <br>
             <input type="text" name="nome" id="nome" placeholder="">
@@ -114,22 +115,24 @@
         $(document).ready(function(){
 
           // ajax
-          // $('.c-instructions__description').on('click', 'a', function(e){
-          //     e.preventDefault();
-          //
-          //     $.ajax({
-          //         url:  '/api/newsletter',
-          //         type: "POST",
-          //         data: {
-          //             nome:  'Cícero Santos',
-          //             email :  'cicero.br@gmail.com'
-          //         },
-          //         success: function( response ) {
-          //             alert('Sucesso!');
-          //         },
-          //     });
-          //
-          // });
+          $('.ajax-form').submit(function(e){
+              e.preventDefault();
+
+              $.ajax({
+                  url:  '/api/newsletter', //passo a url fake
+                  type: "POST",
+                  data: { //dados fakes
+                      nome:  'Cícero Santos',
+                      email :  'cicero.br@gmail.com'
+                  },
+                  success: function( response ) {
+                      $(".modal").hide(); //esconde a modal
+                      $("#mask").hide(); //esconde a máscara negra de fundo da modal
+                      alert('Cadastro efetuado com sucesso :) Bem-vindo a nossa newsletter.');
+                  },
+              });
+
+          });
 
           // modal
           $("a[rel=modal]").click( function(ev){

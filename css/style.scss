@@ -69,7 +69,7 @@ $breakpoints: (
 
     &:focus{
       border: solid 2px yellow;
-      
+
     }
 
   }
@@ -88,6 +88,23 @@ $breakpoints: (
     box-shadow: 0px 1px 0px 0px #D94E4C;
   }
 
+}
+
+// gatos (imagens)
+.gato-big{
+  display: block;
+
+  @include mappy-bp(mobile tablet){
+    display: none;
+  }
+}
+
+.gato-tablet{
+  display: none;
+
+  @include mappy-bp(mobile tablet){
+    display: block;
+  }
 }
 
 // modal

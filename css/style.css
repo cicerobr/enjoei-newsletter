@@ -277,6 +277,18 @@ Como usar:
     .box-form input[type=submit]:last-child {
       margin-right: 0; }
 
+.gato-big {
+  display: block; }
+  @media all and (min-width: 20em) and (max-width: 39.9375em) {
+    .gato-big {
+      display: none; } }
+
+.gato-tablet {
+  display: none; }
+  @media all and (min-width: 20em) and (max-width: 39.9375em) {
+    .gato-tablet {
+      display: block; } }
+
 .modal {
   display: none;
   width: 800px;
