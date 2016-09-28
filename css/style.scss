@@ -1,0 +1,40 @@
+// Bootstrap
+@import '../css/bootstrap.min.css';
+
+/* importa o jeet grid */
+@import 'jeet/index';
+
+// Mixins
+@import '../css/_mixins.scss';
+
+//Fontes nativas
+@import '../css/_fonts.scss';
+
+// Breakpoint
+@import '../css/_breakpoints.scss';
+
+// seta breakpoints
+$breakpoints: (
+  'mobile' : 320px,
+  'tablet' : 640px,
+  'site'   : 920px,
+  'wide'   : 1200px,
+  'mega'   : 1400px,
+);
+
+// Css Plugins
+@import '../css/slick.scss';
+@import '../css/slick-theme.scss';
+
+
+.container{
+  @include center(1050px);
+}
+
+.header{
+  @include col(1/1);
+
+  @include mappy-bp(mobile tablet){
+
+  }
+}

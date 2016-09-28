@@ -1,0 +1,60 @@
+
+/* Gradientes */
+@mixin gradient($from, $to) {
+  /* fallback/image quando não houver gradiente */
+  background-color: $from;
+  /* Firefox 3.6+ */
+  background-image: -moz-linear-gradient($from, $to);
+  /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  /* Safari 5.1+, Chrome 10+ */
+  background-image: -webkit-linear-gradient($from, $to);
+  /* Opera 11.10+ */
+  background-image: -o-linear-gradient($from, $to);
+}
+
+/* Converte px para rem em fontes */
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+/*
+SVG com fallback para PNG
+
+Como usar:
+body {
+  @include background-image('pattern');
+}
+*/
+$image-path: 'images' !default;
+$fallback-extension: 'png' !default;
+
+@mixin background-image($name, $size:false){
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size){
+        background-size: $size;
+    }
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+    }
+}
+
+/* Opacidade crossbrowser
+
+Como usar:
+.faded-text {
+  @include opacity(0.8);
+}
+
+*/
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
