@@ -88,11 +88,11 @@
         <form action="" class="ajax-form">
 
           <label>Nome <br>
-            <input type="text" name="nome" id="nome" placeholder="">
+            <input type="text" name="nome" id="nome" placeholder="" required="" oninvalid="setCustomValidity('Por favor, preencha o seu nome')" onchange="try{setCustomValidity('')}catch(e){}">
           </label>
 
           <label>Email <br>
-            <input type="text" name="email" id="email" placeholder="">
+            <input type="text" name="email" id="email" placeholder="" required="" oninvalid="setCustomValidity('Por favor, preencha o seu email')" onchange="try{setCustomValidity('')}catch(e){}">
           </label>
 
           <input type="submit" value="quero receber novidades">
