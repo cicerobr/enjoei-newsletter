@@ -16,7 +16,8 @@
 // seta breakpoints
 $breakpoints: (
   'mobile' : 320px,
-  'tablet' : 640px,
+  'middle' : 640px,
+  'tablet' : 780px,
   'site'   : 920px,
   'wide'   : 1200px,
   'mega'   : 1400px,
@@ -88,6 +89,26 @@ $breakpoints: (
     box-shadow: 0px 1px 0px 0px #D94E4C;
   }
 
+  @include mappy-bp(mobile middle){
+    @include center(90%);
+
+    form{
+      @include col(1/1);
+
+    }
+
+  }
+
+  @include mappy-bp(middle tablet){
+    @include center(80%);
+    margin-top: 20px;
+
+    form{
+      @include col(1/1);
+
+    }
+  }
+
 }
 
 // gatos (imagens)
@@ -100,10 +121,17 @@ $breakpoints: (
 }
 
 .gato-tablet{
-  display: none;
+  display: none !important;
 
-  @include mappy-bp(mobile tablet){
-    display: block;
+  @include mappy-bp(mobile middle){
+    display: none;
+  }
+
+  @include mappy-bp(middle tablet){
+    display: block !important;
+    position: absolute;
+    top: 393px;
+    left: 269px;
   }
 }
 
@@ -140,6 +168,30 @@ $breakpoints: (
       @include font-size(28px);
       color: #fff;
       font-weight: normal;
+    }
+
+
+    @include mappy-bp(mobile middle){
+      width: 300px;
+      height: 415px;
+      margin-left: -12px;
+
+      p{
+        @include font-size(18px);
+      }
+
+    }
+
+    @include mappy-bp(middle tablet){
+      width: 625px;
+      height: 476px;
+      margin-top: -25%;
+
+      p{
+        @include center(70%);
+        @include font-size(25px);
+      }
+
     }
 
 

@@ -276,18 +276,61 @@ Como usar:
     box-shadow: 0px 1px 0px 0px #D94E4C; }
     .box-form input[type=submit]:last-child {
       margin-right: 0; }
+  @media all and (min-width: 20em) and (max-width: 39.9375em) {
+    .box-form {
+      width: auto;
+      max-width: 90%;
+      float: none;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0;
+      padding-right: 0; }
+      .box-form form {
+        float: left;
+        clear: none;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 3%; }
+        .box-form form:last-child {
+          margin-right: 0; } }
+  @media all and (min-width: 40em) and (max-width: 48.6875em) {
+    .box-form {
+      width: auto;
+      max-width: 80%;
+      float: none;
+      display: block;
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0;
+      padding-right: 0;
+      margin-top: 20px; }
+      .box-form form {
+        float: left;
+        clear: none;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 3%; }
+        .box-form form:last-child {
+          margin-right: 0; } }
 
 .gato-big {
   display: block; }
-  @media all and (min-width: 20em) and (max-width: 39.9375em) {
+  @media all and (min-width: 20em) and (max-width: 48.6875em) {
     .gato-big {
       display: none; } }
 
 .gato-tablet {
-  display: none; }
+  display: none !important; }
   @media all and (min-width: 20em) and (max-width: 39.9375em) {
     .gato-tablet {
-      display: block; } }
+      display: none; } }
+  @media all and (min-width: 40em) and (max-width: 48.6875em) {
+    .gato-tablet {
+      display: block !important;
+      position: absolute;
+      top: 393px;
+      left: 269px; } }
 
 .modal {
   display: none;
@@ -325,6 +368,30 @@ Como usar:
     font-size: 1.75rem;
     color: #fff;
     font-weight: normal; }
+  @media all and (min-width: 20em) and (max-width: 39.9375em) {
+    .modal {
+      width: 300px;
+      height: 415px;
+      margin-left: -12px; }
+      .modal p {
+        font-size: 18px;
+        font-size: 1.125rem; } }
+  @media all and (min-width: 40em) and (max-width: 48.6875em) {
+    .modal {
+      width: 625px;
+      height: 476px;
+      margin-top: -25%; }
+      .modal p {
+        width: auto;
+        max-width: 70%;
+        float: none;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 25px;
+        font-size: 1.5625rem; } }
 
 #mask {
   display: none;

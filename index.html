@@ -77,7 +77,7 @@
     <div class="modal" id="janela1">
       <a href="#" class="fechar"><img src="images/fechar.png" alt="" /></a>
       <h2>ENJUNEWS</h2>
-      <p>receba novidades do site mais legal do brasiô, coloca seu <br>nome e email ai embaixo e manda bala :)</p>
+      <p>receba novidades do site mais legal do brasiô, coloca seu nome e email ai embaixo e manda bala :)</p>
 
       <div class="box-form">
 
@@ -111,65 +111,64 @@
     <!-- faz o envio post via ajax -->
     <script>
 
+      $(document).ready(function(){
 
-        $(document).ready(function(){
+        // ajax
+        $('.ajax-form').submit(function(e){
+            e.preventDefault();
 
-          // ajax
-          $('.ajax-form').submit(function(e){
-              e.preventDefault();
+            $.ajax({
+                url:  '/api/newsletter', //passo a url fake
+                type: "POST",
+                data: { //dados fakes
+                    nome:  'Cícero Santos',
+                    email :  'cicero.br@gmail.com'
+                },
+                success: function( response ) {
+                    $(".modal").hide(); //esconde a modal
+                    $("#mask").hide(); //esconde a máscara negra de fundo da modal
+                    alert('Cadastro efetuado com sucesso :) Bem-vindo a nossa newsletter.');
+                },
+            });
 
-              $.ajax({
-                  url:  '/api/newsletter', //passo a url fake
-                  type: "POST",
-                  data: { //dados fakes
-                      nome:  'Cícero Santos',
-                      email :  'cicero.br@gmail.com'
-                  },
-                  success: function( response ) {
-                      $(".modal").hide(); //esconde a modal
-                      $("#mask").hide(); //esconde a máscara negra de fundo da modal
-                      alert('Cadastro efetuado com sucesso :) Bem-vindo a nossa newsletter.');
-                  },
-              });
+        });
 
-          });
+        // modal
+        $("a[rel=modal]").click( function(ev){
+            ev.preventDefault();
 
-          // modal
-          $("a[rel=modal]").click( function(ev){
-              ev.preventDefault();
+            var id = $(this).attr("href");
 
-              var id = $(this).attr("href");
+            // capturo a altura e a largura
+            var alturaTela = $(document).height();
+            var larguraTela = $(window).width();
 
-              // capturo a altura e a largura
-              var alturaTela = $(document).height();
-              var larguraTela = $(window).width();
+            //colocando o fundo preto
+            $('#mask').css({'width':larguraTela,'height':alturaTela});
+            $('#mask').fadeIn(1000);
+            $('#mask').fadeTo("slow",0.8);
 
-              //colocando o fundo preto
-              $('#mask').css({'width':larguraTela,'height':alturaTela});
-              $('#mask').fadeIn(1000);
-              $('#mask').fadeTo("slow",0.8);
+            // calculo necessário para posicionar a modal
+            var left = ($(window).width() /2) - ( $(id).width() / 2 );
+            var top = ($(window).height() / 2) - ( $(id).height() / 2 );
 
-              // calculo necessário para posicionar a modal
-              var left = ($(window).width() /2) - ( $(id).width() / 2 );
-              var top = ($(window).height() / 2) - ( $(id).height() / 2 );
+            // pego resultado do calculo e insiro no css
+            $(id).css({'top':top,'left':left});
 
-              // pego resultado do calculo e insiro via css
-              $(id).css({'top':top,'left':left});
+            // mostra
+            $(id).show();
+        });
 
-              // mostra
-              $(id).show();
-          });
+        $("#mask").click( function(){
+            $(this).hide();
+            $(".modal").hide();
+        });
 
-          $("#mask").click( function(){
-              $(this).hide();
-              $(".modal").hide();
-          });
-
-          $('.fechar').click(function(ev){
-              ev.preventDefault();
-              $("#mask").hide();
-              $(".modal").hide();
-          });
+        $('.fechar').click(function(ev){
+            ev.preventDefault();
+            $("#mask").hide();
+            $(".modal").hide();
+        });
       });
     </script>
   </body>
