@@ -117,18 +117,22 @@
         $('.ajax-form').submit(function(e){
             e.preventDefault();
 
+            //pega dados do form
+            var dados = $('form').serialize();
+
             $.ajax({
                 url:  '/api/newsletter', //passo a url fake
                 type: "POST",
-                data: { //dados fakes
-                    nome:  'Cícero Santos',
-                    email :  'cicero.br@gmail.com'
-                },
-                success: function( response ) {
+                data: dados, //identifica os dados do form
+                success: function( data ) {
                     $(".modal").hide(); //esconde a modal
                     $("#mask").hide(); //esconde a máscara negra de fundo da modal
                     alert('Cadastro efetuado com sucesso :) Bem-vindo a nossa newsletter.');
                 },
+                // erro caso a api responda com status de erro
+                error: function(data){
+                 alert("Ops, não conseguimos cadastrar você. Tente novamente por favor :)");
+                 }
             });
 
         });
