@@ -22,10 +22,6 @@ $breakpoints: (
   'mega'   : 1400px,
 );
 
-// Css Plugins
-@import '../css/slick.scss';
-@import '../css/slick-theme.scss';
-
 
 .container{
   @include center(1050px);
@@ -38,3 +34,53 @@ $breakpoints: (
 
   }
 }
+
+
+// modal
+.modal{
+    display:none;
+    width:774px;
+    // @include col(5/8);
+    height:480px;
+    position:absolute;
+    left:0;
+    top:0;
+    background:#ea5653;
+    z-index:9900;
+    padding:10px;
+    border-radius:8px;
+    color: #fff;
+
+    font-family: $pr;
+
+    h2{
+      font-family: $psb;
+      text-align: center;
+      @include font-size(43px);
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-top: 30px;
+    }
+
+    p{
+      @include center(500px);
+      font-family: $pr;
+      text-align: center;
+      @include font-size(28px);
+      color: #fff;
+      font-weight: normal;
+    }
+
+
+}
+
+#mask{
+    display:none;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:1000;
+    background-color:#000;
+}
+
+.fechar{display:block; text-align:right;}
