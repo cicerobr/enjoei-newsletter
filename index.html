@@ -79,6 +79,27 @@
       <a href="#" class="fechar"><img src="images/fechar.png" alt="" /></a>
       <h2>ENJUNEWS</h2>
       <p>receba novidades do site mais legal do brasiô, coloca seu <br>nome e email ai embaixo e manda bala :)</p>
+
+      <div class="box-form">
+
+        <img src="images/gato-big.png" alt="Enjoei :)">
+
+        <form action="">
+
+          <label>Nome <br>
+            <input type="text" name="nome" id="nome" placeholder="">
+          </label>
+
+          <label>Email <br>
+            <input type="text" name="email" id="email" placeholder="">
+          </label>
+
+          <input type="submit" value="quero receber novidades">
+
+        </form>
+
+      </div>
+
     </div>
 
     <!-- mascara -->
@@ -116,6 +137,7 @@
 
               var id = $(this).attr("href");
 
+              // capturo a altura e a largura
               var alturaTela = $(document).height();
               var larguraTela = $(window).width();
 
@@ -124,10 +146,14 @@
               $('#mask').fadeIn(1000);
               $('#mask').fadeTo("slow",0.8);
 
+              // calculo necessário para posicionar a modal
               var left = ($(window).width() /2) - ( $(id).width() / 2 );
               var top = ($(window).height() / 2) - ( $(id).height() / 2 );
 
+              // pego resultado do calculo e insiro via css
               $(id).css({'top':top,'left':left});
+
+              // mostra
               $(id).show();
           });
 
