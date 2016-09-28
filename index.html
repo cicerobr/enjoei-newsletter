@@ -3,6 +3,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>enjoei - teste front-end</title>
     <link rel="icon" type="image/x-icon" href="https://www.enjoei.com.br/favicon.ico" />
 
@@ -44,7 +46,7 @@
 
       <p class="c-instructions__description">
         precisamos que uma modal abra quando o
-        usuário clicar <strong><a href="#">aqui</a></strong>.
+        usuário clicar <strong><a href="#janela1" rel="modal">aqui</a></strong>.
         <br><br>
         o desenho da modal, que deve ser responsiva,
         está incluído na pasta que enviamos a você.
@@ -71,23 +73,75 @@
         indicando o momento do início do teste.
       </p>
     </div>
+
+    <!-- marcação da modal -->
+    <div class="modal" id="janela1">
+      <a href="#" class="fechar"><img src="images/fechar.png" alt="" /></a>
+      <h2>ENJUNEWS</h2>
+      <p>receba novidades do site mais legal do brasiô, coloca seu <br>nome e email ai embaixo e manda bala :)</p>
+    </div>
+
+    <!-- mascara -->
+    <div id="mask"></div>
+
+
+
+    <!-- faz o envio post via ajax -->
     <script>
-        $('.c-instructions__description').on('click', 'a', function(e){
-            e.preventDefault();
 
-            $.ajax({
-                url:  '/api/newsletter',
-                type: "POST",
-                data: {
-                    nome:  'teste',
-                    email :  'teste@teste.com'
-                },
-                success: function( response ) {
-                    alert('Sucesso!');
-                },
-            });
 
-        });
+        $(document).ready(function(){
+
+          // ajax
+          // $('.c-instructions__description').on('click', 'a', function(e){
+          //     e.preventDefault();
+          //
+          //     $.ajax({
+          //         url:  '/api/newsletter',
+          //         type: "POST",
+          //         data: {
+          //             nome:  'Cícero Santos',
+          //             email :  'cicero.br@gmail.com'
+          //         },
+          //         success: function( response ) {
+          //             alert('Sucesso!');
+          //         },
+          //     });
+          //
+          // });
+
+          // modal
+          $("a[rel=modal]").click( function(ev){
+              ev.preventDefault();
+
+              var id = $(this).attr("href");
+
+              var alturaTela = $(document).height();
+              var larguraTela = $(window).width();
+
+              //colocando o fundo preto
+              $('#mask').css({'width':larguraTela,'height':alturaTela});
+              $('#mask').fadeIn(1000);
+              $('#mask').fadeTo("slow",0.8);
+
+              var left = ($(window).width() /2) - ( $(id).width() / 2 );
+              var top = ($(window).height() / 2) - ( $(id).height() / 2 );
+
+              $(id).css({'top':top,'left':left});
+              $(id).show();
+          });
+
+          $("#mask").click( function(){
+              $(this).hide();
+              $(".modal").hide();
+          });
+
+          $('.fechar').click(function(ev){
+              ev.preventDefault();
+              $("#mask").hide();
+              $(".modal").hide();
+          });
+      });
     </script>
   </body>
 </html>
